@@ -40,7 +40,6 @@
 
         --apple-gray-btn: rgba(118, 118, 128, 0.12);
         --apple-border: rgba(0, 0, 0, 0.08);
-        --apple-border-focus: #0071e3;
 
         --radius-sm: 8px;
         --radius-md: 12px;
@@ -49,7 +48,6 @@
 
         --apple-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
         --apple-shadow-card: 0 4px 16px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
-        --apple-shadow-float: 0 12px 32px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.03);
       }
 
       * {
@@ -75,7 +73,7 @@
         margin: 0 auto;
       }
 
-      /* 애플 스타일 헤더 */
+      /* 헤더 */
       header {
         margin-bottom: 24px;
       }
@@ -151,7 +149,7 @@
         height: 14px;
       }
 
-      /* 애플 스타일 콜아웃 / 안내 배너 */
+      /* 저장 안내 콜아웃 */
       .sync-callout {
         background: rgba(255, 255, 255, 0.85);
         backdrop-filter: blur(20px);
@@ -165,7 +163,7 @@
         align-items: center;
         justify-content: space-between;
         gap: 12px;
-        margin-bottom: 24px;
+        margin-bottom: 16px;
         box-shadow: var(--apple-shadow-sm);
       }
 
@@ -214,6 +212,40 @@
         height: 13px;
       }
 
+      /* Google 캘린더 연동 상시 안내 배너 */
+      .gcal-policy-banner {
+        background: #ffffff;
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        border-left: 4px solid #1a73e8;
+        border-radius: var(--radius-md);
+        padding: 12px 16px;
+        font-size: 12px;
+        color: var(--apple-text-secondary);
+        margin-bottom: 24px;
+        box-shadow: var(--apple-shadow-sm);
+      }
+
+      .gcal-policy-title {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-weight: 600;
+        color: var(--apple-text-primary);
+        font-size: 13px;
+        margin-bottom: 4px;
+      }
+
+      .gcal-policy-title svg {
+        width: 16px;
+        height: 16px;
+        color: #1a73e8;
+      }
+
+      .gcal-policy-desc {
+        line-height: 1.5;
+        color: var(--apple-text-secondary);
+      }
+
       /* 경고 배너 */
       .apple-alert {
         display: none;
@@ -240,6 +272,47 @@
         flex-shrink: 0;
       }
 
+      /* 토스트 피드백 알림 (캘린더 링크 클릭 시) */
+      .gcal-toast {
+        display: none;
+        background: #1d1d1f;
+        color: #ffffff;
+        border-radius: var(--radius-md);
+        padding: 12px 18px;
+        font-size: 13px;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+        margin-bottom: 20px;
+        align-items: flex-start;
+        gap: 10px;
+        line-height: 1.45;
+        animation: appleFadeIn 0.2s ease-out;
+      }
+
+      .gcal-toast.active {
+        display: flex;
+      }
+
+      .gcal-toast svg {
+        width: 18px;
+        height: 18px;
+        color: #60a5fa;
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+
+      .gcal-toast-close {
+        background: transparent;
+        border: none;
+        color: #a1a1a6;
+        cursor: pointer;
+        padding: 2px;
+        margin-left: auto;
+      }
+
+      .gcal-toast-close:hover {
+        color: #ffffff;
+      }
+
       /* 애플 카드 컨테이너 */
       .apple-card {
         background-color: var(--apple-card);
@@ -248,7 +321,6 @@
         box-shadow: var(--apple-shadow-card);
         padding: 24px;
         margin-bottom: 28px;
-        transition: box-shadow 0.2s ease;
       }
 
       .card-header-label {
@@ -308,7 +380,7 @@
         border: 1px solid #d1d1d6;
         border-radius: var(--radius-md);
         outline: none;
-        transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+        transition: border-color 0.15s ease, box-shadow 0.15s ease;
       }
 
       .apple-input::placeholder {
@@ -357,7 +429,7 @@
         }
       }
 
-      /* iOS 스타일 세그먼티드 컨트롤 (우선순위 선택기) */
+      /* 세그먼티드 컨트롤 */
       .apple-segmented-control {
         background-color: var(--apple-gray-btn);
         border-radius: var(--radius-md);
@@ -464,7 +536,7 @@
         color: var(--apple-text-primary);
       }
 
-      /* 애플 주요 액션 버튼 (등록 버튼) */
+      /* 등록 버튼 */
       .apple-primary-btn {
         width: 100%;
         height: 46px;
@@ -533,14 +605,12 @@
         border-radius: var(--radius-pill);
       }
 
-      /* 필터 탭 (애플 필터 캡슐) */
       .filter-capsules {
         display: flex;
         align-items: center;
         gap: 6px;
         overflow-x: auto;
         padding-bottom: 2px;
-        -webkit-overflow-scrolling: touch;
       }
 
       .filter-capsule {
@@ -571,19 +641,19 @@
       .task-list-flow {
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 12px;
       }
 
       .task-item-card {
         background-color: var(--apple-card);
         border: 1px solid rgba(0, 0, 0, 0.06);
         border-radius: var(--radius-md);
-        padding: 14px 16px;
+        padding: 16px 18px;
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         gap: 14px;
         box-shadow: var(--apple-shadow-sm);
-        transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.12s ease;
+        transition: border-color 0.15s ease, box-shadow 0.15s ease;
       }
 
       .task-item-card:hover {
@@ -601,7 +671,7 @@
         color: var(--apple-text-tertiary);
       }
 
-      /* 애플 미리알림 스타일 원형 체크박스 */
+      /* 원형 체크박스 */
       .apple-checkbox {
         width: 22px;
         height: 22px;
@@ -614,6 +684,7 @@
         cursor: pointer;
         transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
         flex-shrink: 0;
+        margin-top: 2px;
         outline: none;
       }
 
@@ -644,13 +715,13 @@
         transform: scale(1);
       }
 
-      /* 업무 본문 */
+      /* 본문 영역 */
       .task-body {
         flex: 1;
         min-width: 0;
         display: flex;
         flex-direction: column;
-        gap: 5px;
+        gap: 6px;
       }
 
       .task-text {
@@ -669,7 +740,7 @@
         flex-wrap: wrap;
       }
 
-      /* 애플 캡슐 뱃지 */
+      /* 애플 캡슐 태그 */
       .apple-tag {
         display: inline-flex;
         align-items: center;
@@ -679,7 +750,6 @@
         padding: 3px 9px;
         border-radius: var(--radius-pill);
         white-space: nowrap;
-        letter-spacing: -0.01em;
       }
 
       .tag-priority-high {
@@ -727,7 +797,68 @@
         font-weight: 500;
       }
 
-      /* 삭제 액션 버튼 */
+      /* Google 캘린더 연동 컨트롤 영역 */
+      .gcal-action-row {
+        margin-top: 6px;
+        padding-top: 8px;
+        border-top: 1px solid rgba(0, 0, 0, 0.04);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .gcal-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 5px 12px;
+        font-size: 12px;
+        font-weight: 500;
+        color: #1a73e8;
+        background-color: #f8fafd;
+        border: 1px solid rgba(26, 115, 232, 0.25);
+        border-radius: var(--radius-sm);
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.15s ease;
+        font-family: inherit;
+        white-space: nowrap;
+      }
+
+      .gcal-btn:hover:not(.disabled) {
+        background-color: #e8f0fe;
+        border-color: #1a73e8;
+        box-shadow: 0 1px 3px rgba(26, 115, 232, 0.15);
+      }
+
+      .gcal-btn svg {
+        width: 14px;
+        height: 14px;
+        flex-shrink: 0;
+      }
+
+      .gcal-btn.disabled {
+        color: #8e8e93;
+        background-color: #f2f2f7;
+        border-color: rgba(0, 0, 0, 0.08);
+        cursor: not-allowed;
+        opacity: 0.7;
+      }
+
+      .gcal-hint-text {
+        font-size: 11px;
+        color: var(--apple-text-tertiary);
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+      }
+
+      .gcal-hint-text.disabled-hint {
+        color: #b45309;
+      }
+
+      /* 삭제 버튼 */
       .apple-trash-btn {
         background: transparent;
         border: none;
@@ -741,6 +872,7 @@
         cursor: pointer;
         transition: all 0.15s ease;
         flex-shrink: 0;
+        margin-top: -2px;
       }
 
       .apple-trash-btn:hover {
@@ -753,7 +885,7 @@
         height: 16px;
       }
 
-      /* 빈 상태 디자인 */
+      /* 빈 상태 */
       .apple-empty {
         background-color: var(--apple-card);
         border: 1px dashed rgba(0, 0, 0, 0.1);
@@ -791,7 +923,7 @@
       .empty-sub-text {
         font-size: 13px;
         color: var(--apple-text-tertiary);
-        max-width: 320px;
+        max-width: 340px;
         margin: 0 auto;
         line-height: 1.5;
       }
@@ -824,7 +956,7 @@
   </head>
   <body>
     <div class="app-wrapper">
-      <!-- 애플 스타일 헤더 -->
+      <!-- 헤더 -->
       <header>
         <div class="header-container">
           <div class="header-brand">
@@ -852,7 +984,7 @@
         </div>
       </header>
 
-      <!-- 저장 상태 및 동기화 안내 콜아웃 -->
+      <!-- 저장 안내 콜아웃 -->
       <div class="sync-callout" role="status">
         <div class="sync-callout-inner">
           <div class="sync-callout-icon">
@@ -871,6 +1003,23 @@
         </div>
       </div>
 
+      <!-- Google 캘린더 연동 상시 유의사항 안내 배너 -->
+      <div class="gcal-policy-banner">
+        <div class="gcal-policy-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          <span>Google 캘린더 추가 시 유의사항</span>
+        </div>
+        <p class="gcal-policy-desc">
+          Google 캘린더에서 확인 후 저장하세요. 이후 변경은 자동 동기화되지 않습니다.<br />
+          링크를 열었다고 해서 등록이 완료된 것이 아니며, 이미 추가한 일정의 중복 저장 여부는 자동으로 판단할 수 없습니다.
+        </p>
+      </div>
+
       <!-- 오류 안내 (저장 실패 등) -->
       <div id="alertBanner" class="apple-alert" role="alert">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -879,6 +1028,21 @@
           <line x1="12" y1="16" x2="12.01" y2="16"></line>
         </svg>
         <span id="alertBannerMessage">저장되지 않았습니다. 브라우저 저장소 용량을 확인해주세요.</span>
+      </div>
+
+      <!-- 클릭 시 안내 토스트 피드백 -->
+      <div id="gcalToast" class="gcal-toast" role="alert">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="16" x2="12" y2="12"></line>
+          <line x1="12" y1="8" x2="12.01" y2="8"></line>
+        </svg>
+        <div>
+          <strong>Google 캘린더 작성 창이 새 탭에서 열렸습니다.</strong><br />
+          Google 캘린더에서 내용 확인 후 <strong>[저장]</strong> 버튼을 눌러야 등록됩니다.
+          이후 플래너와의 수정사항은 자동 동기화되지 않으며, 중복 저장 여부는 자동으로 확인되지 않습니다.
+        </div>
+        <button type="button" class="gcal-toast-close" onclick="closeGcalToast()" aria-label="닫기">&times;</button>
       </div>
 
       <!-- 업무 등록 카드 영역 -->
@@ -916,7 +1080,7 @@
 
           <!-- 우선순위 & 마감일 -->
           <div class="form-two-col">
-            <!-- 우선순위 (애플 세그먼티드 컨트롤) -->
+            <!-- 우선순위 -->
             <div class="form-field" style="margin-bottom: 0;">
               <label class="field-label">우선순위</label>
               <div class="apple-segmented-control" role="radiogroup" aria-label="우선순위 선택">
@@ -997,7 +1161,7 @@
             <span id="totalCountBadge" class="apple-count-pill">0</span>
           </div>
 
-          <!-- 필터 캡슐 그룹 -->
+          <!-- 필터 캡슐 -->
           <div class="filter-capsules" role="tablist">
             <button class="filter-capsule active" data-filter="all" onclick="setFilter('all')">전체 <span id="countAll">0</span></button>
             <button class="filter-capsule" data-filter="active" onclick="setFilter('active')">진행 중 <span id="countActive">0</span></button>
@@ -1060,6 +1224,7 @@
         const alertBannerMessage = document.getElementById('alertBannerMessage');
         const saveIndicator = document.getElementById('saveIndicator');
         const currentDateDisplay = document.getElementById('currentDateDisplay');
+        const gcalToast = document.getElementById('gcalToast');
 
         // 필터 카운트 요소
         const countAll = document.getElementById('countAll');
@@ -1144,7 +1309,7 @@
           alertBanner.classList.remove('active');
         }
 
-        // 저장 성공 인디케이터 부드러운 애니메이션
+        // 저장 성공 인디케이터
         let saveTimer = null;
         function showSaveSuccessIndicator() {
           if (!saveIndicator) return;
@@ -1154,6 +1319,21 @@
             saveIndicator.classList.remove('visible');
           }, 1600);
         }
+
+        // 캘린더 알림 토스트 닫기
+        window.closeGcalToast = function () {
+          gcalToast.classList.remove('active');
+        };
+
+        let gcalToastTimer = null;
+        window.handleGcalClick = function () {
+          // 클릭 시 사용자에게 캘린더 화면에서 저장이 필요함을 안내 (링크를 열었다고 '등록 완료'로 처리하지 않음)
+          gcalToast.classList.add('active');
+          if (gcalToastTimer) clearTimeout(gcalToastTimer);
+          gcalToastTimer = setTimeout(() => {
+            gcalToast.classList.remove('active');
+          }, 8000);
+        };
 
         // 우선순위 매핑
         const PRIORITY_MAP = {
@@ -1293,6 +1473,52 @@
           }
         }
 
+        /**
+         * Google 캘린더 종일 일정 형식의 dates 문자열 계산: YYYYMMDD/YYYYMMDD
+         * 종료일은 마감일의 다음 날(배타적 종료일).
+         * 월말 및 연말(예: 12월 31일 -> 다음해 1월 1일)도 정확하게 다음 날로 계산.
+         */
+        function calculateGoogleCalendarDates(dueDateStr) {
+          if (!dueDateStr) return '';
+          const parts = dueDateStr.split('-');
+          const year = parseInt(parts[0], 10);
+          const monthIndex = parseInt(parts[1], 10) - 1; // 0-based
+          const day = parseInt(parts[2], 10);
+
+          // 시작일 (마감일)
+          const start = new Date(year, monthIndex, day);
+          // 종료일 (마감일 + 1일 - 배타적 종료일 계산, 월말/연말 자동 롤오버)
+          const next = new Date(year, monthIndex, day + 1);
+
+          function toYMD(d) {
+            const y = d.getFullYear();
+            const m = String(d.getMonth() + 1).padStart(2, '0');
+            const dt = String(d.getDate()).padStart(2, '0');
+            return `${y}${m}${dt}`;
+          }
+
+          return `${toYMD(start)}/${toYMD(next)}`;
+        }
+
+        /**
+         * Google 캘린더 URL 생성 (URLSearchParams를 통한 한글, 공백, &, 특수문자 완벽 인코딩)
+         */
+        function buildGoogleCalendarUrl(task) {
+          if (!task.dueDate) return '';
+
+          const datesStr = calculateGoogleCalendarDates(task.dueDate);
+          const priorityInfo = PRIORITY_MAP[task.priority] || PRIORITY_MAP.medium;
+          const detailsContent = `[우선순위: ${priorityInfo.label}]\n업무 플래너에서 추가한 일정입니다.`;
+
+          const params = new URLSearchParams();
+          params.set('action', 'TEMPLATE');
+          params.set('text', task.title);
+          params.set('dates', datesStr);
+          params.set('details', detailsContent);
+
+          return `https://calendar.google.com/calendar/r/eventedit?${params.toString()}`;
+        }
+
         // 렌더링
         function render() {
           const todayStr = getLocalTodayString();
@@ -1355,10 +1581,44 @@
               const priorityInfo = PRIORITY_MAP[task.priority] || PRIORITY_MAP.medium;
               const dateStatus = getTaskDateStatus(task, todayStr);
 
-              // 애플 Reminders 스타일 체크마크 SVG
+              // 아이콘 SVG들
               const checkIcon = `<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
-              // 애플 스타일 휴지통 SVG
               const trashIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"></path><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>`;
+              const calIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>`;
+
+              // Google 캘린더 추가 버튼 구성
+              let gcalActionHtml = '';
+              if (task.dueDate) {
+                const gcalUrl = buildGoogleCalendarUrl(task);
+                gcalActionHtml = `
+                  <a
+                    href="${gcalUrl}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="gcal-btn"
+                    title="Google 캘린더 새 탭에서 종일 일정으로 추가"
+                    onclick="handleGcalClick()"
+                  >
+                    ${calIcon}
+                    <span>Google 캘린더에 추가</span>
+                  </a>
+                  <span class="gcal-hint-text">제목과 우선순위가 Google로 전달됩니다.</span>
+                `;
+              } else {
+                gcalActionHtml = `
+                  <button
+                    type="button"
+                    class="gcal-btn disabled"
+                    disabled
+                    title="마감일을 먼저 설정해 주세요"
+                    aria-label="마감일을 먼저 설정해 주세요"
+                  >
+                    ${calIcon}
+                    <span>Google 캘린더에 추가</span>
+                  </button>
+                  <span class="gcal-hint-text disabled-hint">마감일을 먼저 설정해 주세요</span>
+                `;
+              }
 
               card.innerHTML = `
                 <div
@@ -1384,6 +1644,11 @@
                       ${dateStatus.label}
                     </span>
                     ${task.completed ? '<span class="apple-tag tag-status-completed">완료됨</span>' : ''}
+                  </div>
+
+                  <!-- Google 캘린더 버튼 및 안내 -->
+                  <div class="gcal-action-row">
+                    ${gcalActionHtml}
                   </div>
                 </div>
 
